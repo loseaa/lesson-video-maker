@@ -4,11 +4,12 @@
 
 ## 在 Codex 中使用
 
-首次安装可把仓库克隆到个人 Skill 目录。工作区内使用时，把目标目录改为 `.agents/skills/lesson-video-maker`。安装后开启一个新的 Codex 对话。[Codex Skill 安装位置](https://developers.openai.com/api/reference/cli)
+登录有仓库访问权的 GitHub CLI 账户后，可以把私有仓库克隆到个人 Skill 目录。工作区内使用时，把目标目录改为 `.agents/skills/lesson-video-maker`。安装后开启一个新的 Codex 对话。[Codex Skill 安装位置](https://developers.openai.com/api/reference/cli)
 
 ```sh
 mkdir -p ~/.agents/skills
-git clone git@github.com:loseaa/lesson-video-maker.git ~/.agents/skills/lesson-video-maker
+git -c credential.helper= -c 'credential.helper=!gh auth git-credential' clone \
+  https://github.com/loseaa/lesson-video-maker.git ~/.agents/skills/lesson-video-maker
 ```
 
 macOS 需要 Python 3.10+、Node.js 22+、Google Chrome、FFmpeg 和 ffprobe。在仓库或 Skill 根目录运行以下命令，使用同一个 Python 环境安装 Pillow 并启动 `render.sh`。
