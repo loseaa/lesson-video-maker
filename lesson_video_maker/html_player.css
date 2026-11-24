@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: #101519; color: #f8fafc; font: 16px "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
+#explainer-player { width: min(100%, 1820px); margin: auto; padding: 12px; }
+#explainer-viewport { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
+#explainer-stage { position: absolute; inset: 0 auto auto 0; width: 1600px; height: 900px; overflow: hidden; transform-origin: top left; }
+#explainer-stage > [data-scene] { position: absolute; inset: 0; overflow: hidden; isolation: isolate; }
+#explainer-caption { position: absolute; z-index: 500; left: 50%; bottom: 33px; transform: translateX(-50%); padding: 10px 20px 12px; width: max-content; max-width: 85%; color: white; background: #0a1019f2; border: 1px solid #ffffff4d; border-radius: 10px; font-size: 33px; font-weight: 650; text-align: center; pointer-events: none; }
+#explainer-caption:empty { display: none; }
+#explainer-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding-top: 12px; font-variant-numeric: tabular-nums; }
+#explainer-controls button { padding: 6px 11px; border: 1px solid #657585; border-radius: 6px; background: #222d37; color: #f8fafc; cursor: pointer; font: inherit; }
+#explainer-controls button[aria-current="step"] { border-color: #abf2d3; }
+#explainer-seek { flex: 1; min-width: 130px; accent-color: #abf2d3; }
+#explainer-chapters { display: flex; flex-wrap: wrap; gap: 6px; }
+body.explainer-capture { overflow: hidden; }
+.explainer-capture #explainer-player { width: 100%; max-width: none; padding: 0; }
+.explainer-capture #explainer-controls { display: none; }
+.explainer-cover #explainer-caption { display: none; }
+@media (max-width: 720px) { #explainer-chapters { width: 100%; } }

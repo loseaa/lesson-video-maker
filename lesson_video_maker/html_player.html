@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data: blob:; font-src 'self' file: data:; media-src 'self' file: blob:">
+<title>[[TITLE]]</title>
+<link rel="stylesheet" href="html_player.css">
+<link rel="stylesheet" href="html_icons.css">
+<link rel="stylesheet" href="scenes.css">
+<script src="html_motion.js" defer></script>
+<script src="scenes.js" defer></script>
+<script src="html_player.js" defer></script>
+</head>
+<body>
+<main id="explainer-player">
+  <div id="explainer-viewport">
+    <article id="explainer-stage" aria-label="[[TITLE]]">
+[[SCENES]]
+      <div id="explainer-caption" aria-live="off"></div>
+    </article>
+  </div>
+  <nav id="explainer-controls" aria-label="播放控制">
+    <button id="explainer-play" type="button">播放</button>
+    <input id="explainer-seek" type="range" value="0" min="0" step="0.01" aria-label="播放进度">
+    <span id="explainer-time"></span>
+    <span id="explainer-chapters" aria-label="章节"></span>
+  </nav>
+  <audio id="explainer-audio" src="narration.wav" preload="metadata"></audio>
+</main>
+<script type="application/json" id="explainer-timing">[[DATA]]</script>
+</body>
+</html>

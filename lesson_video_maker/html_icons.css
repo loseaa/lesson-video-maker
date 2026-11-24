@@ -1,0 +1,115 @@
+/* Outline pictograms. Size and stroke color follow the surrounding scene. */
+.tx-icon {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  font-size: var(--tx-icon-size, 1em);
+  color: var(--tx-icon-color, currentColor);
+  vertical-align: -.13em;
+  pointer-events: none;
+}
+.tx-icon::before, .tx-icon::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+.tx-icon[data-glyph="server"]::before,
+.tx-icon[data-glyph="server"]::after {
+  left: 9%;
+  width: 82%;
+  height: 32%;
+  border: .075em solid currentColor;
+  border-radius: .08em;
+  background: radial-gradient(circle at 19% 50%, currentColor 0 .038em, transparent .045em);
+}
+.tx-icon[data-glyph="server"]::before { top: 14%; }
+.tx-icon[data-glyph="server"]::after { top: 54%; }
+.tx-icon[data-glyph="cache"]::before {
+  left: 28%;
+  top: 9%;
+  width: 44%;
+  height: 54%;
+  border: .075em solid currentColor;
+  border-radius: .06em;
+}
+.tx-icon[data-glyph="cache"]::after {
+  left: 10%;
+  top: 52%;
+  width: 80%;
+  height: 35%;
+  border: .075em solid currentColor;
+  border-radius: .07em .07em .11em .11em;
+  background: linear-gradient(currentColor, currentColor) center 49% / 22% .06em no-repeat;
+}
+.tx-icon[data-glyph="file"]::before {
+  left: 21%;
+  top: 7%;
+  width: 59%;
+  height: 86%;
+  border: .075em solid currentColor;
+  border-radius: .08em .18em .08em .08em;
+}
+.tx-icon[data-glyph="file"]::after {
+  left: 34%;
+  top: 46%;
+  width: 32%;
+  height: 22%;
+  border-top: .063em solid currentColor;
+  border-bottom: .063em solid currentColor;
+}
+.tx-icon[data-glyph="clock"]::before,
+.tx-icon[data-glyph="network"]::before,
+.tx-icon[data-glyph="check"]::before {
+  inset: 7%;
+  border: .075em solid currentColor;
+  border-radius: 50%;
+}
+.tx-icon[data-glyph="clock"]::after {
+  left: 47%;
+  top: 24%;
+  width: 23%;
+  height: 30%;
+  border-left: .075em solid currentColor;
+  border-bottom: .075em solid currentColor;
+}
+.tx-icon[data-glyph="network"]::before {
+  background: linear-gradient(currentColor, currentColor) center / 100% .065em no-repeat;
+}
+.tx-icon[data-glyph="network"]::after {
+  top: 7%;
+  left: 31%;
+  width: 38%;
+  height: 86%;
+  border-left: .065em solid currentColor;
+  border-right: .065em solid currentColor;
+  border-radius: 50%;
+}
+.tx-icon[data-glyph="terminal"]::before {
+  left: 8%;
+  top: 15%;
+  width: 84%;
+  height: 70%;
+  border: .075em solid currentColor;
+  border-radius: .09em;
+  background: linear-gradient(currentColor, currentColor) 69% 65% / 20% .07em no-repeat;
+}
+.tx-icon[data-glyph="terminal"]::after {
+  left: 25%;
+  top: 37%;
+  width: 20%;
+  height: 23%;
+  border-top: .075em solid currentColor;
+  border-right: .075em solid currentColor;
+  transform: rotate(45deg);
+}
+.tx-icon[data-glyph="check"]::after {
+  left: 31%;
+  top: 32%;
+  width: 39%;
+  height: 25%;
+  border-bottom: .08em solid currentColor;
+  border-left: .08em solid currentColor;
+  transform: rotate(-45deg);
+}

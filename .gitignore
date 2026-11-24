@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+.env
+.env.*
+*-local.json
+cookies/
+cookies.json
+verify_code.txt
+*.pem
+*.key
+.lesson-video-maker-*/
+/outputs/
+/work/
+/.demo/

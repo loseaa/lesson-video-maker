@@ -1,0 +1,4 @@
+interface:
+  display_name: "动画教学视频制作"
+  short_description: "把课文、知识点和技术主题制作成带口播和字幕的动画教学视频"
+  default_prompt: "用 $lesson-video-maker 把这个知识点做成一支动画教学视频。"
