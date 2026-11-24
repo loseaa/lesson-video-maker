@@ -1,0 +1,79 @@
+
+    <section data-scene="case" aria-label="MySQL 的 B+ 树索引">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>订单查询</span><div class="chapter-progress" aria-label="第1章，共八章"><b class="now"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+      </header>
+      <h1>MySQL 的 B+ 树索引</h1>
+      <canvas class="lesson-canvas" id="case-view" width="1920" height="1080" aria-label="MySQL 的 B+ 树索引的动画演示"></canvas>
+
+        <aside class="cover-art" aria-hidden="true">
+          <div class="cover-copy"><div class="cover-category">MySQL <i></i> InnoDB</div>
+          <h2>查一笔订单，<br>要翻<span>几页？</span></h2>
+          <p>用 5 分钟看懂 B+ 树索引</p></div>
+          <div class="cover-diagram">
+            <svg viewBox="0 0 700 480" fill="none">
+              <g stroke="#285060" stroke-width="4" stroke-linejoin="round"><path d="M345 92V136H125V185 M345 136H565V185 M345 136V185"/><path d="M345 249V295H222V344 M345 295H470V344"/></g>
+              <path d="M345 92V185 M345 249V295H222V344" stroke="#73dfc4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              <g stroke="#426473" stroke-width="2" fill="#102a37"><rect x="240" y="32" width="210" height="66" rx="12"/><rect x="40" y="179" width="170" height="64" rx="12"/><rect x="250" y="179" width="190" height="70" rx="12"/><rect x="480" y="179" width="170" height="64" rx="12"/><rect x="392" y="344" width="172" height="75" rx="14"/></g>
+              <rect x="123" y="336" width="200" height="102" rx="16" fill="#f1f2df"/><rect x="250" y="179" width="190" height="70" rx="12" stroke="#73dfc4" stroke-width="3"/>
+              <g font-family="Menlo,monospace" text-anchor="middle" dominant-baseline="middle"><text x="345" y="68" fill="#f1f2df" font-size="32">30 │ 60</text><text x="125" y="214" fill="#8aa4ab" font-size="27">&lt;30</text><text x="345" y="216" fill="#73dfc4" font-size="31">40 │ 49</text><text x="563" y="214" fill="#8aa4ab" font-size="27">≥60</text><text x="221" y="390" fill="#123232" font-weight="bold" font-size="49">#42</text><text x="477" y="383" fill="#8aa4ab" font-size="26">49 · 50</text></g>
+            </svg>
+          </div>
+        </aside>
+    </section>
+    <section data-scene="pages" aria-label="把一个索引页拆开看">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>索引页</span><div class="chapter-progress" aria-label="第2章，共八章"><b class="read"></b><b class="now"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+      </header>
+      <h1>把一个索引页拆开看</h1>
+      <canvas class="lesson-canvas" id="pages-view" width="1920" height="1080" aria-label="把一个索引页拆开看的动画演示"></canvas>
+
+    </section>
+    <section data-scene="seek" aria-label="一次等值查询，逐层缩小范围">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>主键查找</span><div class="chapter-progress" aria-label="第3章，共八章"><b class="read"></b><b class="read"></b><b class="now"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+      </header>
+      <h1>一次等值查询，逐层缩小范围</h1>
+      <canvas class="lesson-canvas" id="seek-view" width="1920" height="1080" aria-label="一次等值查询，逐层缩小范围的动画演示"></canvas>
+
+    </section>
+    <section data-scene="range" aria-label="范围查询，沿叶子页继续走">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>范围扫描</span><div class="chapter-progress" aria-label="第4章，共八章"><b class="read"></b><b class="read"></b><b class="read"></b><b class="now"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+      </header>
+      <h1>范围查询，沿叶子页继续走</h1>
+      <canvas class="lesson-canvas" id="range-view" width="1920" height="1080" aria-label="范围查询，沿叶子页继续走的动画演示"></canvas>
+
+    </section>
+    <section data-scene="secondary" aria-label="换个查询条件，为什么要回表？">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>二级索引</span><div class="chapter-progress" aria-label="第5章，共八章"><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="now"></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+      </header>
+      <h1>换个查询条件，为什么要回表？</h1>
+      <canvas class="lesson-canvas" id="secondary-view" width="1920" height="1080" aria-label="换个查询条件，为什么要回表？的动画演示"></canvas>
+
+    </section>
+    <section data-scene="cover" aria-label="只改一个字段，还需要回表吗？">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>覆盖索引</span><div class="chapter-progress" aria-label="第6章，共八章"><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="now"></b><b class=""></b><b class=""></b></div></div>
+      </header>
+      <h1>只改一个字段，还需要回表吗？</h1>
+      <canvas class="lesson-canvas" id="cover-view" width="1920" height="1080" aria-label="只改一个字段，还需要回表吗？的动画演示"></canvas>
+
+    </section>
+    <section data-scene="split" aria-label="插进一条订单，页会怎样变化？">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>页分裂</span><div class="chapter-progress" aria-label="第7章，共八章"><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="now"></b><b class=""></b></div></div>
+      </header>
+      <h1>插进一条订单，页会怎样变化？</h1>
+      <canvas class="lesson-canvas" id="split-view" width="1920" height="1080" aria-label="插进一条订单，页会怎样变化？的动画演示"></canvas>
+
+    </section>
+    <section data-scene="quiz" aria-label="最后一题，你能画出这条路径吗？">
+      <header class="scene-head"><div class="series"><span class="page-mark" aria-hidden="true"></span>MySQL <span class="divide"></span> InnoDB</div>
+        <div class="chapter-indicator"><span>随堂练习</span><div class="chapter-progress" aria-label="第8章，共八章"><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="read"></b><b class="now"></b></div></div>
+      </header>
+      <h1>最后一题，你能画出这条路径吗？</h1>
+      <canvas class="lesson-canvas" id="quiz-view" width="1920" height="1080" aria-label="最后一题，你能画出这条路径吗？的动画演示"></canvas>
+
+    </section>

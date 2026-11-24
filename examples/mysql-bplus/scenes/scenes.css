@@ -1,0 +1,31 @@
+#explainer-stage {font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+#explainer-stage>section {
+  background-color:#091a24;
+  background-image:radial-gradient(ellipse at 84% 45%,#142d38 0%,transparent 62%),linear-gradient(150deg,#0e252f 0%,#091a24 48%);
+  color:#f1f2df;
+}
+.scene-head {position:absolute;top:39px;left:76px;right:76px;display:flex;align-items:center;justify-content:space-between;height:31px}
+.series,.chapter-indicator,.chapter-progress{display:flex;align-items:center}
+.series{font:600 21px "Menlo",monospace;letter-spacing:.025em;color:#a1b9b9;gap:16px}
+.page-mark{width:25px;height:19px;border:2px solid #73dfc4;box-shadow:-4px 4px 0 -2px #091a24,-4px 4px 0 0 #73dfc4;border-radius:3px;display:inline-block;margin:0 7px 2px 4px}
+.divide {height:16px;width:1px;background:#52716f}
+.chapter-indicator{gap:20px;color:#a6b8bb;font-size:18px;font-weight:550}
+.chapter-progress{gap:5px}
+.chapter-progress b{width:14px;height:5px;border-radius:1px;background:#324a53}
+.chapter-progress .read{background:#4f978d}
+.chapter-progress .now{width:28px;background:#73dfc4}
+#explainer-stage h1{position:absolute;margin:0;top:91px;left:73px;line-height:1.19;letter-spacing:-.045em;font-size:63px;font-weight:750;color:#f1f2df}
+#explainer-stage>section::after{position:absolute;content:"";pointer-events:none;top:188px;left:76px;width:1448px;background:linear-gradient(90deg,#52716f,#263e47 38%,#28414c);height:1px}
+.lesson-canvas{position:absolute;inset:0;width:1600px;height:900px;pointer-events:none}
+#explainer-caption{bottom:33px;font-size:32px;line-height:1.42;max-width:93%;background:#06151bef;color:#f8f9ee;border:1px solid #2f4951;border-radius:8px;font-weight:550;letter-spacing:.01em;padding:9px 23px 11px}
+.cover-art{display:none}
+.explainer-cover .cover-art{display:block;position:absolute;z-index:4;inset:0;background:radial-gradient(ellipse at 82% 50%,#1a3d46 0%,#0a202b 62%,#091a24 100%)}
+.explainer-cover #explainer-stage>section::after{display:none}
+.cover-copy{position:absolute;left:88px;top:165px}
+.cover-category{display:flex;align-items:center;gap:20px;font:600 31px Menlo,monospace;color:#91ddd0;letter-spacing:.015em}
+.cover-category i{height:25px;width:2px;background:#407872}
+.cover-copy h2{font-family:"PingFang SC",sans-serif;font-size:101px;line-height:1.18;letter-spacing:-.067em;margin:45px 0 30px;font-weight:790}
+.cover-copy h2 span{color:#ffad72}
+.cover-copy p{margin:0;font-size:39px;color:#c6d5cf;letter-spacing:-.02em}
+.cover-diagram{position:absolute;left:775px;right:55px;top:178px;transform:rotate(-3deg)}
+.cover-diagram svg{width:100%;height:auto}

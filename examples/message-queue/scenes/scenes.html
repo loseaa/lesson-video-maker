@@ -1,0 +1,103 @@
+<section data-scene="intro" class="shot intro">
+  <header><b>消息队列</b><span>重复投递</span></header>
+  <div class="lead">
+    <p>同一笔订单</p>
+    <h1>为什么积分<br>多加了一次<span>？</span></h1>
+    <div class="verdict" id="i-question"><span class="tx-icon" data-glyph="network" aria-hidden="true"></span>追踪这条消息的第二次投递</div>
+  </div>
+  <div class="receipt" id="i-card">
+    <div class="receipt-head"><span class="tx-icon" data-glyph="file" aria-hidden="true"></span><b>积分流水</b><span>订单 #42</span></div>
+    <div class="receipt-line" id="i-expected"><span>应到账</span><b>+10</b></div>
+    <div class="receipt-line actual" id="i-real"><span>实际到账</span><strong id="intro-count">+10</strong></div>
+    <div class="receipt-rows" id="i-rows"><div><code>E-42</code><b>+10</b></div><div><code>E-42</code><b>+10</b></div></div>
+  </div>
+</section>
+
+<section data-scene="delivery" class="shot delivery">
+  <header><b>消息队列</b><span>手动确认</span></header>
+  <div class="headline"><p>正常路径</p><h2>先投递，后确认。</h2></div>
+  <div class="stations">
+    <div class="station producer"><span class="tx-icon" data-glyph="server" aria-hidden="true"></span><b>订单服务</b><small>发奖励事件</small></div>
+    <div class="station queue"><span class="tx-icon" data-glyph="cache" aria-hidden="true"></span><b>消息队列</b><small id="a-state">待入队</small></div>
+    <div class="station consumer" id="a-consumer"><span class="tx-icon" data-glyph="server" aria-hidden="true"></span><b>积分服务</b><small>写入数据库</small></div>
+    <div class="station-rail"></div>
+    <div class="packet" id="a-file"><span class="tx-icon" data-glyph="file" aria-hidden="true"></span><code>E-42</code><b>+10</b></div>
+    <div class="ack-slip" id="a-ack"><span class="tx-icon" data-glyph="check" aria-hidden="true"></span>ACK 已送达</div>
+  </div>
+</section>
+
+<section data-scene="crash" class="shot crash">
+  <header><b>消息队列</b><span>断连与重投</span></header>
+  <div class="headline"><p>故障发生在两步之间</p><h2>积分到了，回执没到。</h2></div>
+  <div class="crash-grid">
+    <div id="f-write" class="status-panel done"><span class="tx-icon" data-glyph="check" aria-hidden="true"></span><p>数据库</p><b>已提交</b><small>积分余额 +10</small></div>
+    <div id="f-ack" class="status-panel fault"><span class="tx-icon" data-glyph="clock" aria-hidden="true"></span><p>队列回执</p><b id="fault-title">等待送达</b><small id="fault-detail">消费者正在处理</small></div>
+  </div>
+  <div id="f-status" class="connection"><span class="tx-icon" data-glyph="network" aria-hidden="true"></span>连接关闭 <strong>· 还未收到 ACK</strong></div>
+  <div id="f-file" class="packet requeued"><span class="tx-icon" data-glyph="file" aria-hidden="true"></span><code>E-42</code><b>重新入队</b></div>
+</section>
+
+<section data-scene="repeat" class="shot repeat">
+  <header><b>消息队列</b><span>同一个事件</span></header>
+  <div class="headline"><p>重投仍带着原编号</p><h2>同一条消息，又来了。</h2></div>
+  <div id="r-copy1" class="paper original"><span class="tx-icon" data-glyph="file" aria-hidden="true"></span><b>第一次</b><code>E-42</code><small>领取奖励 +10</small></div>
+  <div id="r-copy2" class="paper second"><span class="tx-icon" data-glyph="file" aria-hidden="true"></span><b>第二次</b><code>E-42</code><small>领取奖励 +10</small></div>
+  <div id="r-guideline" class="repeat-policy"><span class="tx-icon" data-glyph="network" aria-hidden="true"></span>至少一次投递 · E-42 可能再次送达</div>
+  <div id="r-risk" class="risk"><label>每次都加分</label><strong id="risk-total">+10</strong><p>同一笔订单</p></div>
+  <div id="r-lesson" class="goal"><b>幂等</b><p>同一事件多次处理，积分只变化一次。</p></div>
+</section>
+
+<section data-scene="unique" class="shot unique">
+  <header><b>消息队列</b><span>唯一约束</span></header>
+  <div class="headline"><p>数据库记住每个事件</p><h2>一条编号，一笔流水。</h2></div>
+  <div class="sql">
+    <div class="window"><span class="tx-icon" data-glyph="terminal" aria-hidden="true"></span><span>points_ledger.sql</span></div>
+    <div id="g-key" class="syntax"><i>01</i><code>event_id <strong>UNIQUE</strong></code></div>
+    <div class="syntax"><i>02</i><code>INSERT INTO points_ledger …</code></div>
+    <div id="sql-conflict" class="syntax"><i>03</i><code>ON CONFLICT (event_id) <strong>DO NOTHING</strong></code></div>
+    <div class="syntax"><i>04</i><code>RETURNING event_id;</code></div>
+  </div>
+  <div class="ledger">
+    <div class="ledger-head"><span class="tx-icon" data-glyph="cache" aria-hidden="true"></span><b>积分流水</b></div>
+    <div class="ledger-cols"><span>事件编号</span><span>增加</span></div>
+    <div id="g-insert" class="row"><code>E-42</code><b>+10</b></div>
+    <div id="g-retry" class="row pending"><code>E-42</code><b>重复</b></div>
+    <div id="g-count" class="ledger-foot"><span>投递 2 次</span><strong>留下 1 条</strong></div>
+  </div>
+</section>
+
+<section data-scene="transaction" class="shot transaction">
+  <header><b>消息队列</b><span>事务与并发</span></header>
+  <div class="headline"><p>余额单独存储时</p><h2>两次写入，一起提交。</h2></div>
+  <div id="t-writes" class="transaction-box">
+    <div class="transaction-cap"><span class="tx-icon" data-glyph="cache" aria-hidden="true"></span>数据库事务</div>
+    <div id="t-ledger" class="tx-step"><small>01</small><b>新增积分流水</b><code>E-42</code></div>
+    <div id="t-balance" class="tx-step"><small>02</small><b>更新余额</b><code>+10</code></div>
+    <div id="t-return" class="tx-rule"><code>RETURNING</code> 返回新行时，才执行余额更新。</div>
+  </div>
+  <div id="t-rollback" class="rollback"><span>事务失败</span><b>两次写入一起回滚</b></div>
+  <div id="t-concurrent" class="concurrency"><span>同时插入 E-42</span><b>唯一约束裁决，只写入一条</b></div>
+</section>
+
+<section data-scene="order" class="shot order">
+  <header><b>消息队列</b><span>确认时机</span></header>
+  <div class="headline"><p>两种顺序，两种结果</p><h2>确认放在哪里？</h2></div>
+  <div id="o-bad" class="route wrong"><div><span>01</span><b>先发 ACK</b></div><div class="gap"><span>×</span><b>这里崩溃</b></div><div><span>02</span><b>写数据库</b></div><strong>队列已结束 · 积分可能漏加</strong></div>
+  <div id="o-good" class="route right"><div><span>01</span><b>事务提交</b></div><div class="gap"><span>◇</span><b>这里崩溃</b></div><div><span>02</span><b>发 ACK</b></div><strong>重投命中唯一键 · 不再加分</strong></div>
+  <div id="o-repeat" class="repeat-ack"><span class="tx-icon" data-glyph="check" aria-hidden="true"></span>重投时，核实结果已提交后也可以确认。</div>
+</section>
+
+<section data-scene="ending" class="shot ending">
+  <header><b>消息队列</b><span>幂等消费</span></header>
+  <div class="headline"><h2>让业务只生效一次。</h2></div>
+  <div class="summary-items">
+    <div id="e-id"><span class="tx-icon" data-glyph="file" aria-hidden="true"></span><b>编号</b><small>重试用同一个事件编号</small></div>
+    <div id="e-db"><span class="tx-icon" data-glyph="cache" aria-hidden="true"></span><b>事务</b><small>唯一键与业务写入一起落地</small></div>
+    <div id="e-ack"><span class="tx-icon" data-glyph="check" aria-hidden="true"></span><b>确认</b><small>提交后再告诉队列</small></div>
+  </div>
+  <div id="e-total" class="stats">
+    <div><strong>2</strong><span>次投递</span></div>
+    <div><strong>1</strong><span>条流水</span></div>
+    <div><strong>+10</strong><span>积分</span></div>
+  </div>
+</section>
